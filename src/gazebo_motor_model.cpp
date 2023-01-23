@@ -136,6 +136,8 @@ void GazeboMotorModel::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf) {
   getSdfParam<double>(_sdf, "timeConstantDown", time_constant_down_, time_constant_down_);
   getSdfParam<double>(_sdf, "rotorVelocitySlowdownSim", rotor_velocity_slowdown_sim_, 10);
 
+  getSdfParam<bool>(_sdf, "enableMotorCrash", enable_motor_crash_, true);
+
   /*
   std::cout << "Subscribing to: " << motor_test_sub_topic_ << std::endl;
   motor_sub_ = node_handle_->Subscribe<mav_msgs::msgs::MotorSpeed>("~/" + model_->GetName() + motor_test_sub_topic_, &GazeboMotorModel::testProto, this);
@@ -206,7 +208,16 @@ void GazeboMotorModel::UpdateForcesAndMoments() {
 
   // scale down force linearly with forward speed
   // XXX this has to be modelled better
-  //
+  
+  double speed_diff = last_motor_speed_ - std::fabs(real_motor_velocity);
+
+  if (speed_diff > 0.15 && motor_ok_flag_ && enable_motor_crash_) {
+    std::cout << "Motor  " << motor_number_ << " crashed!" << enable_motor_crash_ <<std::endl;
+    motor_ok_flag_ = false;
+  }
+
+  last_motor_speed_ = std::fabs(real_motor_velocity);
+
 #if GAZEBO_MAJOR_VERSION >= 9
   ignition::math::Vector3d body_velocity = link_->WorldLinearVel();
   ignition::math::Vector3d joint_axis = joint_->GlobalAxis(0);
@@ -275,7 +286,11 @@ void GazeboMotorModel::UpdateForcesAndMoments() {
 #endif
   }
 #else
-  joint_->SetVelocity(0, turning_direction_ * ref_motor_rot_vel / rotor_velocity_slowdown_sim_);
+  if (motor_ok_flag_) {
+    joint_->SetVelocity(0, turning_direction_ * ref_motor_rot_vel / rotor_velocity_slowdown_sim_);
+  } else {
+    joint_->SetVelocity(0, 0);
+  }
 #endif /* if 0 */
 }
 

@@ -108,6 +108,10 @@ class GazeboMotorModel : public MotorModel, public ModelPlugin {
 
   int screen_msg_flag = 1;
 
+  bool motor_ok_flag_ = true;
+  bool enable_motor_crash_ = true;
+  double last_motor_speed_ = 0.0;
+
   double max_force_{kDefaultMaxForce};
   double max_rot_velocity_{kDefaulMaxRotVelocity};
   double moment_constant_{kDefaultMomentConstant};
