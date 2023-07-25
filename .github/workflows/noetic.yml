@@ -3,10 +3,10 @@ name: Noetic
 on:
   push:
 
-    branches: [ master ]
+    branches: [ firmware_1.13.2-deb ]
 
   pull_request:
-    branches: [ master ]
+    branches: [ firmware_1.13.2-deb ]
 
   # schedule:
   #   - cron:  '0 0 * * *' # at the end of every day
