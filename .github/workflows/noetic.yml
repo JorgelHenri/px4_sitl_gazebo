@@ -39,6 +39,9 @@ jobs:
         run: .ci_scripts/package_build/install_ros.sh
 
       - name: Build
+        run: .ci/install_dependencies.sh
+
+      - name: Build
         run: .ci_scripts/package_build/build_package.sh
 
       - name: Deploy
