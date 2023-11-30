@@ -150,375 +150,6 @@
       <self_collide>0</self_collide>
     </link>
 
-    <link name="cgo3_mount_link">
-      <inertial>
-        <!-- place holder -->
-        <pose>-0.041 0 -0.162 0 0 0</pose>
-        <mass>0.1</mass>
-        <inertia>
-          <ixx>0.001</ixx>
-          <ixy>0</ixy>
-          <ixz>0</ixz>
-          <iyy>0.001</iyy>
-          <iyz>0</iyz>
-          <izz>0.001</izz>
-        </inertia>
-      </inertial>
-      <visual name='cgo3_mount_visual'>
-        <pose>0 0 0 0 0 0</pose>
-        <geometry>
-          <mesh>
-            <scale>0.001 0.001 0.001</scale>
-            <uri>model://hexa_x_tilt/meshes/cgo3_mount_remeshed_v1.stl</uri>
-          </mesh>
-        </geometry>
-        <material>
-          <script>
-            <name>Gazebo/DarkGrey</name>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-          </script>
-        </material>
-      </visual>
-    </link>
-    <joint name='cgo3_mount_joint' type='revolute'>
-      <child>cgo3_mount_link</child>
-      <parent>base_link</parent>
-      <pose>0 0 0 0 0 0</pose>
-      <axis>
-        <xyz>0 0 1</xyz>
-        <limit>
-          <lower>0</lower>
-          <upper>0</upper>
-          <effort>100</effort>
-          <velocity>-1</velocity>
-        </limit>
-        <dynamics>
-          <damping>1</damping>
-        </dynamics>
-        <use_parent_model_frame>1</use_parent_model_frame>
-      </axis>
-      <physics>
-        <ode>
-          <implicit_spring_damper>1</implicit_spring_damper>
-        </ode>
-      </physics>
-    </joint>
-
-    <link name="cgo3_vertical_arm_link">
-      <inertial>
-        <!-- place holder -->
-        <pose>-0.041 0 -0.162 0 0 0</pose>
-        <mass>0.1</mass>
-        <inertia>
-          <ixx>0.001</ixx>
-          <ixy>0</ixy>
-          <ixz>0</ixz>
-          <iyy>0.001</iyy>
-          <iyz>0</iyz>
-          <izz>0.001</izz>
-        </inertia>
-      </inertial>
-      <visual name='cgo3_vertical_arm_visual'>
-        <pose>0 0 0 0 0 0</pose>
-        <geometry>
-          <mesh>
-            <scale>0.001 0.001 0.001</scale>
-            <uri>model://hexa_x_tilt/meshes/cgo3_vertical_arm_remeshed_v1.stl</uri>
-          </mesh>
-        </geometry>
-        <material>
-          <script>
-            <name>Gazebo/DarkGrey</name>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-          </script>
-        </material>
-      </visual>
-    </link>
-    <joint name='cgo3_vertical_arm_joint' type='revolute'>
-      <child>cgo3_vertical_arm_link</child>
-      <parent>cgo3_mount_link</parent>
-      <pose>-0.026 0 -0.10 0 0 0</pose>
-      <!--
-      <controlIndex>6</controlIndex>
-      -->
-      <axis>
-        <xyz>0 0 1</xyz>
-        <limit>
-          <lower>-1e16</lower>
-          <upper>1e16</upper>
-          <effort>100</effort>
-          <velocity>-1</velocity>
-        </limit>
-        <dynamics>
-          <damping>0.1</damping>
-        </dynamics>
-        <use_parent_model_frame>1</use_parent_model_frame>
-      </axis>
-      <physics>
-        <ode>
-          <implicit_spring_damper>1</implicit_spring_damper>
-          <limit>
-            <!-- testing soft limits -->
-            <cfm>0.1</cfm>
-            <erp>0.2</erp>
-          </limit>
-        </ode>
-      </physics>
-    </joint>
-
-    <link name="cgo3_horizontal_arm_link">
-      <inertial>
-        <!-- place holder -->
-        <pose>-0.041 0 -0.081 0 0 0</pose>
-        <mass>0.1</mass>
-        <inertia>
-          <ixx>0.001</ixx>
-          <ixy>0</ixy>
-          <ixz>0</ixz>
-          <iyy>0.001</iyy>
-          <iyz>0</iyz>
-          <izz>0.001</izz>
-        </inertia>
-      </inertial>
-      <visual name='cgo3_horizontal_arm_visual'>
-        <pose>0 0 0 0 0 0</pose>
-        <geometry>
-          <mesh>
-            <scale>0.001 0.001 0.001</scale>
-            <uri>model://hexa_x_tilt/meshes/cgo3_horizontal_arm_remeshed_v1.stl</uri>
-          </mesh>
-        </geometry>
-        <material>
-          <script>
-            <name>Gazebo/DarkGrey</name>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-          </script>
-        </material>
-      </visual>
-    </link>
-    <joint name='cgo3_horizontal_arm_joint' type='revolute'>
-      <child>cgo3_horizontal_arm_link</child>
-      <parent>cgo3_vertical_arm_link</parent>
-      <pose>0.026 0 -0.162 0 0 0</pose>
-      <!--
-      <controlIndex>7</controlIndex>
-      -->
-      <axis>
-        <xyz>-1 0 0</xyz>
-        <limit>
-          <lower>-0.785398</lower>
-          <upper>0.785398</upper>
-          <effort>100</effort>
-          <velocity>-1</velocity>
-        </limit>
-        <dynamics>
-          <damping>0.1</damping>
-        </dynamics>
-        <use_parent_model_frame>1</use_parent_model_frame>
-      </axis>
-      <physics>
-        <ode>
-          <implicit_spring_damper>1</implicit_spring_damper>
-          <limit>
-            <!-- testing soft limits -->
-            <cfm>0.1</cfm>
-            <erp>0.2</erp>
-          </limit>
-        </ode>
-      </physics>
-    </joint>
-
-    <!--link name="cgo3_camera_link">
-      <inertial>
-        <pose>-0.041 0 -0.162 0 0 0</pose>
-        <mass>0.1</mass>
-        <inertia>
-          <ixx>0.001</ixx>
-          <ixy>0</ixy>
-          <ixz>0</ixz>
-          <iyy>0.001</iyy>
-          <iyz>0</iyz>
-          <izz>0.001</izz>
-        </inertia>
-      </inertial>
-      <collision name='cgo3_camera_collision'>
-        <pose>-0.041 0 -0.162 0 0 0</pose>
-        <geometry>
-          <sphere>
-            <radius>0.035</radius>
-          </sphere>
-        </geometry>
-        <surface>
-          <friction>
-            <ode>
-              <mu>1</mu>
-              <mu2>1</mu2>
-            </ode>
-          </friction>
-          <contact>
-            <ode>
-              <kp>1e+8</kp>
-              <kd>1</kd>
-              <max_vel>0.01</max_vel>
-              <min_depth>0.001</min_depth>
-            </ode>
-          </contact>
-        </surface>
-      </collision>
-      <visual name='cgo3_camera_visual'>
-        <pose>0 0 0 0 0 0</pose>
-        <geometry>
-          <mesh>
-            <scale>0.001 0.001 0.001</scale>
-            <uri>model://hexa_x_tilt/meshes/cgo3_camera_remeshed_v1.stl</uri>
-          </mesh>
-        </geometry>
-        <material>
-          <script>
-            <name>Gazebo/DarkGrey</name>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-          </script>
-        </material>
-      </visual>
-      <sensor name="camera_imu" type="imu">
-        <always_on>1</always_on>
-      </sensor>
-      <sensor name="camera" type="camera">
-        <pose>-0.051 0 -0.162 0 0 3.14159</pose>
-        <camera>
-          <horizontal_fov>2.0</horizontal_fov>
-          <image>
-            <format>R8G8B8</format>
-            <width>640</width>
-            <height>360</height>
-          </image>
-          <clip>
-            <near>0.05</near>
-            <far>15000</far>
-          </clip>
-        </camera>
-        <always_on>1</always_on>
-        <update_rate>10</update_rate>
-        <visualize>true</visualize>
-        <plugin name="GstCameraPlugin" filename="libgazebo_gst_camera_plugin.so">
-            <robotNamespace></robotNamespace>
-            <udpHost>127.0.0.1</udpHost>
-            <udpPort>5600</udpPort>
-        </plugin>
-        <plugin name="GeotaggedImagesPlugin" filename="libgazebo_geotagged_images_plugin.so">
-            <robotNamespace>hexa_x_tilt</robotNamespace>
-            <interval>1</interval>
-            <width>3840</width>
-            <height>2160</height>
-            <maximum_zoom>8.0</maximum_zoom>
-        </plugin>
-      </sensor>
-    </link-->
-    <!--joint name='cgo3_camera_joint' type='revolute'>
-      <child>cgo3_camera_link</child>
-      <parent>cgo3_horizontal_arm_link</parent>
-      <pose>-0.041 0.03 -0.162 0 0 0</pose>
-      <axis>
-        <xyz>0 -1 0</xyz>
-        <limit>
-          <lower>-1.05</lower>
-          <upper>2.09</upper>
-          <effort>100</effort>
-          <velocity>-1</velocity>
-        </limit>
-        <dynamics>
-          <damping>0.1</damping>
-        </dynamics>
-        <use_parent_model_frame>1</use_parent_model_frame>
-      </axis>
-      <physics>
-        <ode>
-          <implicit_spring_damper>1</implicit_spring_damper>
-          <limit>
-            <cfm>0.1</cfm>
-            <erp>0.2</erp>
-          </limit>
-        </ode>
-      </physics>
-    </joint-->
-
-    <link name="sim_ft_sensor">
-      <inertial>
-        <!-- place holder -->
-        <pose>-0.23 0 0 0 1.57 0</pose>
-        <mass>0.1</mass>
-        <inertia>
-          <ixx>0.001</ixx>
-          <ixy>0</ixy>
-          <ixz>0</ixz>
-          <iyy>0.001</iyy>
-          <iyz>0</iyz>
-          <izz>0.001</izz>
-        </inertia>
-      </inertial>
-      <collision name='collision'>
-        <pose>-0.23 0 0 0 1.57 0</pose>
-        <geometry>
-          <cylinder>
-            <radius>0.01</radius>
-            <length>0.33</length>
-          </cylinder>
-        </geometry>
-      </collision>
-      <visual name='manipulator_arm_cylinder'>
-        <pose>-0.23 0 0 0 1.57 0</pose>
-        <geometry>
-          <cylinder>
-            <radius>0.01</radius>
-            <length>0.32</length>
-          </cylinder>
-        </geometry>
-        <material>
-          <script>
-            <name>Gazebo/DarkGrey</name>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-          </script>
-        </material>
-      </visual>
-      <visual name='manipulator_arm_sensor'>
-        <pose>-0.13 0 0 0 1.57 0</pose>
-        <geometry>
-          <cylinder>
-            <radius>0.032</radius>
-            <length>0.015</length>
-          </cylinder>
-        </geometry>
-        <material>
-          <script>
-            <name>Gazebo/DarkGrey</name>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-          </script>
-        </material>
-      </visual>
-      <visual name='manipulator_arm_tip'>
-        <pose>-0.39 0 0 0 0 0</pose>
-        <geometry>
-          <sphere>
-            <radius>0.01</radius>
-          </sphere>
-        </geometry>
-        <material>
-          <script>
-            <name>Gazebo/DarkGrey</name>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-          </script>
-        </material>
-      </visual>
-    </link>
-    <joint name='manipulator_arm_joint' type='fixed'>
-      <child>sim_ft_sensor</child>
-      <parent>base_link</parent>
-      <pose relative_to="sim_ft_sensor">-0.13 0 0 0 0 0</pose>
-      <physics>
-        <provide_feedback>true</provide_feedback>
-      </physics>
-    </joint>
-
     <link name="left_leg">
       <inertial>
         <!-- place holder -->
@@ -1199,24 +830,8 @@
       </physics>
     </joint>
 
-<!--     <include>
-      <uri>model://sonar</uri>
-    </include> -->
-<!--     <joint name="sonar_joint" type="revolute">
-      <child>sonar_model::link</child>
-      <parent>hexa_x_tilt::base_link</parent>
-      <axis>
-        <xyz>0 0 1</xyz>
-        <limit>
-          <upper>0</upper>
-          <lower>0</lower>
-        </limit>
-      </axis>
-    </joint> -->
-
-
     <plugin name='rosbag' filename='libgazebo_multirotor_base_plugin.so'>
-      <robotNamespace></robotNamespace>
+      <robotNamespace/>
       <linkName>base_link</linkName>
       <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
     </plugin>
@@ -1388,9 +1003,17 @@
       </joint_control_pid>
       -->
     </plugin>
-    <plugin name="gps_plugin" filename="libgazebo_gps_plugin.so">
-        <robotNamespace></robotNamespace>
-        <gpsNoise>true</gpsNoise>
+    <include>
+      <uri>model://gps</uri>
+      <pose>0.1 0 0 0 0 0</pose>
+      <name>gps0</name>
+    </include>
+    <joint name='gps0_joint' type='fixed'>
+      <child>gps0::link</child>
+      <parent>base_link</parent>
+    </joint>
+    <plugin name='groundtruth_plugin' filename='libgazebo_groundtruth_plugin.so'>
+      <robotNamespace/>
     </plugin>
     <plugin name='magnetometer_plugin' filename='libgazebo_magnetometer_plugin.so'>
       <robotNamespace/>
@@ -1404,26 +1027,29 @@
       <robotNamespace/>
       <pubRate>50</pubRate>
       <baroTopic>/baro</baroTopic>
+      <baroDriftPaPerSec>0</baroDriftPaPerSec>
     </plugin>
     <plugin name='mavlink_interface' filename='libgazebo_mavlink_interface.so'>
-      <robotNamespace></robotNamespace>
+      <robotNamespace/>
       <imuSubTopic>/imu</imuSubTopic>
-      <gpsSubTopic>/gps</gpsSubTopic>
       <magSubTopic>/mag</magSubTopic>
       <baroSubTopic>/baro</baroSubTopic>
       <mavlink_addr>INADDR_ANY</mavlink_addr>
+      <mavlink_tcp_port>4560</mavlink_tcp_port>
       <mavlink_udp_port>14560</mavlink_udp_port>
-      <serialEnabled>false</serialEnabled>
+      <serialEnabled>0</serialEnabled>
       <serialDevice>/dev/ttyACM0</serialDevice>
       <baudRate>921600</baudRate>
       <qgc_addr>INADDR_ANY</qgc_addr>
       <qgc_udp_port>14550</qgc_udp_port>
       <sdk_addr>INADDR_ANY</sdk_addr>
       <sdk_udp_port>14540</sdk_udp_port>
-      <hil_mode>false</hil_mode>
-      <hil_state_level>false</hil_state_level>
-      <enable_lockstep>true</enable_lockstep>
-      <use_tcp>true</use_tcp>
+      <hil_mode>0</hil_mode>
+      <hil_state_level>0</hil_state_level>
+      <send_vision_estimation>0</send_vision_estimation>
+      <send_odometry>1</send_odometry>
+      <enable_lockstep>1</enable_lockstep>
+      <use_tcp>1</use_tcp>
       <motorSpeedCommandPubTopic>/gazebo/command/motor_speed</motorSpeedCommandPubTopic>
       <control_channels>
         <channel name="rotor0">
@@ -1546,36 +1172,6 @@
           -->
           <joint_name>rotor_1_joint</joint_name>
         </channel>
-        <!--channel name="gimbal_roll">
-          <input_index>6</input_index>
-          <input_offset>0</input_offset>
-          <input_scaling>-3.1415</input_scaling>
-          <zero_position_disarmed>0</zero_position_disarmed>
-          <zero_position_armed>0</zero_position_armed>
-          <joint_control_type>position_gztopic</joint_control_type>
-          <gztopic>/gimbal_roll_cmd</gztopic>
-          <joint_name>hexa_x_tilt::cgo3_camera_joint</joint_name>
-        </channel>
-        <channel name="gimbal_pitch">
-          <input_index>7</input_index>
-          <input_offset>0</input_offset>
-          <input_scaling>3.1415</input_scaling>
-          <zero_position_disarmed>0</zero_position_disarmed>
-          <zero_position_armed>0</zero_position_armed>
-          <joint_control_type>position_gztopic</joint_control_type>
-          <gztopic>/gimbal_pitch_cmd</gztopic>
-          <joint_name>hexa_x_tilt::cgo3_camera_joint</joint_name>
-        </channel>
-        <channel name="gimbal_yaw">
-          <input_index>8</input_index>
-          <input_offset>0</input_offset>
-          <input_scaling>-3.1415</input_scaling>
-          <zero_position_disarmed>0</zero_position_disarmed>
-          <zero_position_armed>0</zero_position_armed>
-          <joint_control_type>position_gztopic</joint_control_type>
-          <gztopic>/gimbal_yaw_cmd</gztopic>
-          <joint_name>hexa_x_tilt::cgo3_vertical_arm_joint</joint_name>
-        </channel-->
         <channel name="left_leg">
           <input_index>9</input_index>
           <input_offset>1</input_offset>
@@ -1628,78 +1224,5 @@
       <accelerometerBiasCorrelationTime>300.0</accelerometerBiasCorrelationTime>
       <accelerometerTurnOnBiasSigma>0.196</accelerometerTurnOnBiasSigma>
     </plugin>
-    <!--plugin name='gimbal_controller' filename='libgazebo_gimbal_controller_plugin.so'>
-      <joint_yaw>hexa_x_tilt::cgo3_vertical_arm_joint</joint_yaw>
-      <joint_roll>hexa_x_tilt::cgo3_horizontal_arm_joint</joint_roll>
-      <joint_pitch>hexa_x_tilt::cgo3_camera_joint</joint_pitch>
-      <control_gimbal_channels>
-        <channel>
-          <joint_control_pid>
-            <p>1.0</p>
-            <i>0.1</i>
-            <d>0.0005</d>
-            <iMax>0</iMax>
-            <iMin>0</iMin>
-            <cmdMax>1.0</cmdMax>
-            <cmdMin>-1.0</cmdMin>
-          </joint_control_pid>
-          <joint_axis>joint_yaw</joint_axis>
-        </channel>
-        <channel>
-          <joint_control_pid>
-            <p>0.8</p>
-            <i>0.035</i>
-            <d>0.02</d>
-            <iMax>0</iMax>
-            <iMin>0</iMin>
-            <cmdMax>0.3</cmdMax>
-            <cmdMin>-0.3</cmdMin>
-          </joint_control_pid>
-          <joint_axis>joint_roll</joint_axis>
-        </channel>
-        <channel>
-          <joint_control_pid>
-            <p>2.068</p>
-            <i>0.01245</i>
-            <d>0.01</d>
-            <iMax>0</iMax>
-            <iMin>0</iMin>
-            <cmdMax>0.3</cmdMax>
-            <cmdMin>-0.3</cmdMin>
-          </joint_control_pid>
-          <joint_axis>joint_pitch</joint_axis>
-        </channel>
-      </control_gimbal_channels>
-      <gimbal_imu>camera_imu</gimbal_imu>
-    </plugin-->
-    <plugin name="ft_sensor" filename="libgazebo_ros_ft_sensor.so">
-        <updateRate>100.0</updateRate>
-        <topicName>ft_data</topicName>
-        <!-- <gaussianNoise>0.0</gaussianNoise> -->
-        <jointName>manipulator_arm_joint</jointName>
-    </plugin>
-    <plugin name='wind_plugin' filename='libgazebo_wind_plugin.so'>
-      <frameId>base_link</frameId>
-      <linkName>base_link</linkName>
-      <robotNamespace/>
-      <xyzOffset>0 0 0</xyzOffset>
-      <windDirectionMean>0 1 0</windDirectionMean>
-      <windForceMean>0</windForceMean>
-      <windGustDirection>0 0 0</windGustDirection>
-      <windGustDuration>0</windGustDuration>
-      <windGustStart>0</windGustStart>
-      <windGustForceMean>0</windGustForceMean>
-    </plugin>
-    <plugin name="p3d_base_controller" filename="libgazebo_ros_p3d.so">
-      <alwaysOn>true</alwaysOn>
-      <updateRate>200.0</updateRate>
-      <bodyName>base_link</bodyName> <!-- This is the link for which ground truth data will be published. It is also used as the child_frame_id in the odometry message, which is not the correct thing to do because the linear and angular velocity are actually in the world frame, not the 'bodyName' frame. The core_odometry_transform packge will handle this by publishing a new odometry message with the frame_id and child_frame_id corrected.  -->
-      <topicName>ground_truth/state</topicName>
-      <gaussianNoise>0.0</gaussianNoise>
-      <frameName>world</frameName>
-      <xyzOffsets>0 0 0</xyzOffsets>
-      <rpyOffsets>0 0 0</rpyOffsets>
-    </plugin>
   </model>
 </sdf>
-
