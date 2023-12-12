@@ -851,6 +851,7 @@
       <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
       <motorSpeedPubTopic>/motor_speed/4</motorSpeedPubTopic>
       <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+      <enableMotorCrash>0</enableMotorCrash>
       <!--
       <joint_control_pid>
         <p>0.1</p>
@@ -879,6 +880,7 @@
       <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
       <motorSpeedPubTopic>/motor_speed/5</motorSpeedPubTopic>
       <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+      <enableMotorCrash>0</enableMotorCrash>
       <!--
       <joint_control_pid>
         <p>0.1</p>
@@ -907,6 +909,7 @@
       <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
       <motorSpeedPubTopic>/motor_speed/2</motorSpeedPubTopic>
       <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+      <enableMotorCrash>0</enableMotorCrash>
       <!--
       <joint_control_pid>
         <p>0.1</p>
@@ -935,6 +938,7 @@
       <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
       <motorSpeedPubTopic>/motor_speed/3</motorSpeedPubTopic>
       <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+      <enableMotorCrash>0</enableMotorCrash>
       <!--
       <joint_control_pid>
         <p>0.1</p>
@@ -963,6 +967,7 @@
       <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
       <motorSpeedPubTopic>/motor_speed/0</motorSpeedPubTopic>
       <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+      <enableMotorCrash>0</enableMotorCrash>
       <!--
       <joint_control_pid>
         <p>0.1</p>
@@ -991,6 +996,7 @@
       <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
       <motorSpeedPubTopic>/motor_speed/1</motorSpeedPubTopic>
       <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+      <enableMotorCrash>0</enableMotorCrash>
       <!--
       <joint_control_pid>
         <p>0.1</p>
